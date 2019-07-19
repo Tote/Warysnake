@@ -1,7 +1,7 @@
 //Create a fullscreen game
-import GameCanvas   from './GameCanvas.js'
-import Graphics     from './Graphics.js'
-import GameLoop     from './GameLoop.js'
+import GameCanvas   from './gloop/GameCanvas.js'
+import Graphics     from './gloop/Graphics.js'
+import GameLoop     from './gloop/GameLoop.js'
 
 const canvas    = new GameCanvas()
 const graphics  = new Graphics(canvas)
