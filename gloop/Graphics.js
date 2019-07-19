@@ -1,14 +1,22 @@
+import GloopItem from "./GloopItem.js";
+
 export default class Graphics{
     constructor(output){
         this.output = output
         this.context = output.context
     }
 
-    fill(){
+    clear(){
+        const w = this.output.width()
+        const h = this.output.height()
+        this.context.clearRect(0,0,w,h)
+    }
+
+    rect(item){
         this.context.fillRect(
-            0, 0,
-            this.output.width(),
-            this.output.height(),
-        )
+            item.x,
+            item.y,
+            item.w,
+            item.h)
     }
 }
