@@ -17,7 +17,12 @@ const fruit = new BoardCell(4,7, board)
 
 const snake = new Snake()
 snake.addToBody(new BoardCell(0,0,board))
-snake.addToBody(fruit)
+snake.addToBody(new BoardCell(0,1,board))
+snake.addToBody(new BoardCell(0,2,board))
+snake.addToBody(new BoardCell(1,2,board))
+snake.addToBody(new BoardCell(1,3,board))
+
+loop.item(fruit)
 loop.item(snake)
 
 loop.run()

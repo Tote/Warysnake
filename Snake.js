@@ -4,11 +4,30 @@ export default class Snake extends GloopItem{
     constructor(){
         super()
         this.body = []
+        this.vx = 1
+        this.vy = 0
+        this.speed = 0
+        this.maxSpeed = 10
+        this.skippedFrames = 0
     }
 
     draw(g){
-        g.color('black')
-        this.body.forEach( cell => g.rect(cell))
+        this.body.forEach( cell => cell.draw(g))
+    }
+
+    next(t){
+        if( this.skippedFrames <= this.maxSpeed - this.speed ){
+            this.skippedFrames++
+        }else{
+            this.skippedFrames=0
+            const tail = this.body.pop()
+            const head = this.body[0]
+            tail.cellX = head.cellX + this.vx
+            tail.cellY = head.cellY + this.vy
+            this.body.unshift(tail)
+            
+            this.body.forEach( cell => cell.next())
+        }
     }
 
     addToBody(cell){
