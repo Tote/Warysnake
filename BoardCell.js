@@ -5,13 +5,24 @@ export default class BoardCell extends GloopItem {
         super()
         this.cellX = x
         this.cellY = y
-        this.x = board.xOfColumn(this.cellX)
-        this.y = board.yOfRow(this.cellY)
-        this.w = board.colWidth
-        this.h = board.rowHeight
         this.board = board
+        this.position()
+        this.size()
     }
     draw(g){
         g.rect(this)
+    }
+    next(){
+        this.position()
+    }
+
+    position(){
+        this.x = this.board.xOfColumn(this.cellX)
+        this.y = this.board.yOfRow(this.cellY)
+        
+    }
+    size(){
+        this.w = this.board.colWidth
+        this.h = this.board.rowHeight
     }
 }
