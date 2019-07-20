@@ -9,6 +9,7 @@ export default class Board extends GloopItem{
         this.height     = height
         this.rowHeight  = height / rows
         this.colWidth   = width / cols
+        
     }
     draw(g){
         const c = g.context;
@@ -23,5 +24,12 @@ export default class Board extends GloopItem{
             c.lineTo(l,this.height)
         }
         c.stroke()
+    }
+
+    xOfColumn(col){
+        return col * this.colWidth
+    }
+    yOfRow(row){
+        return row * this.rowHeight
     }
 }
