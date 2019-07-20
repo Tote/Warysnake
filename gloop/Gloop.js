@@ -6,14 +6,14 @@ export default class Gloop{
 		this.graphics = graphics
 	}
 
-	run(){
+	run(timestamp){
 		this.graphics.clear()
 		this.rules
 			.filter(  rule => rule.when() )
 			.forEach( rule => rule.then() )
 
 		this.items.forEach( item => {
-			item.next()
+			item.next(timestamp)
 			item.draw(this.graphics)
 		})
 		
