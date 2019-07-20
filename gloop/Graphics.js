@@ -12,6 +12,10 @@ export default class Graphics{
         this.context.clearRect(0,0,w,h)
     }
 
+    color( color ){
+        this.context.fillStyle = color
+    }
+
     rect(item){
         this.context.fillRect(
             item.x,
