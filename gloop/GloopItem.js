@@ -7,5 +7,5 @@ export default class GloopItem{
     }
 
     draw(graphics){}
-    
+    next(){}
 }
