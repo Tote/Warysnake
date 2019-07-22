@@ -26,3 +26,9 @@ export default class BoardCell extends GloopItem {
         this.h = this.board.rowHeight
     }
 }
+
+BoardCell.random = board => new BoardCell(
+    Math.floor(Math.random() * board.colCount),
+    Math.floor(Math.random() * board.rowCount),
+    board
+)
