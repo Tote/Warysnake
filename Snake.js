@@ -31,6 +31,37 @@ export default class Snake extends GloopItem{
     }
 
     addToBody(cell){
-        this.body.push(cell)
+        this.body.unshift(cell)
     }
+
+    eats( cell ){
+        const head = this.body[0]
+        const eats =
+            cell.cellX == head.cellX + this.vx
+            && cell.cellY == head.cellY + this.vy
+
+            console.log(`eats: ${eats}`)
+        return eats
+    }
+
+    goUp(){
+        this.vx = 0
+        this.vy = -1
+    }
+
+    goRight(){
+        this.vx = 1
+        this.vy = 0
+    }
+
+    goDown(){
+        this.vx = 0
+        this.vy = 1
+    }
+
+    goLeft(){
+        this.vx = -1
+        this.vy = 0
+    }
+
 }
