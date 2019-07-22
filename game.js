@@ -15,14 +15,14 @@ const keyboard  = new Keys()
 const board = new Board(10,10,canvas.width(), canvas.height())
 loop.item(board)
 
-let fruit = new BoardCell(4,7, board)
+let fruit = BoardCell.random(board)
+fruit.color = 'red'
 
 const snake = new Snake()
 snake.addToBody(new BoardCell(0,0,board))
-snake.addToBody(new BoardCell(0,1,board))
-snake.addToBody(new BoardCell(0,2,board))
-snake.addToBody(new BoardCell(1,2,board))
-snake.addToBody(new BoardCell(1,3,board))
+snake.addToBody(new BoardCell(1,0,board))
+snake.addToBody(new BoardCell(2,0,board))
+snake.goRight()
 
 loop.item(fruit)
 loop.item(snake)
@@ -49,7 +49,19 @@ loop.rule({
     then: () => {
         snake.addToBody(fruit);
         fruit = BoardCell.random(board)
+        fruit.color = 'red'
         loop.item(fruit)
+        snake.speed++
     }
+})
+
+loop.rule({
+    when: () => snake.eats(board.walls),
+    then: () => snake.stop()
+})
+
+loop.rule({
+    when: () => snake.eats(snake.body),
+    then: () => snake.stop()
 })
 loop.run()

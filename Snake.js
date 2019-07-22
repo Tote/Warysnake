@@ -7,8 +7,9 @@ export default class Snake extends GloopItem{
         this.vx = 1
         this.vy = 0
         this.speed = 0
-        this.maxSpeed = 10
+        this.maxSpeed = 20
         this.skippedFrames = 0
+        this.color = 'black'
     }
 
     draw(g){
@@ -18,6 +19,8 @@ export default class Snake extends GloopItem{
     next(t){
         if( this.skippedFrames <= this.maxSpeed - this.speed ){
             this.skippedFrames++
+        }else if(this.vx == 0 && this.vy == 0){
+            return
         }else{
             this.skippedFrames=0
             const tail = this.body.pop()
@@ -31,17 +34,18 @@ export default class Snake extends GloopItem{
     }
 
     addToBody(cell){
+        cell.color = this.color
         this.body.unshift(cell)
     }
 
-    eats( cell ){
+    eats( target ){
+        if( Array.isArray(target) ){
+            return target.some( cell => this.eats(cell))
+        }
         const head = this.body[0]
-        const eats =
-            cell.cellX == head.cellX + this.vx
-            && cell.cellY == head.cellY + this.vy
-
-            console.log(`eats: ${eats}`)
-        return eats
+        return (
+            target.cellX == head.cellX + this.vx
+            && target.cellY == head.cellY + this.vy)
     }
 
     goUp(){
@@ -64,4 +68,8 @@ export default class Snake extends GloopItem{
         this.vy = 0
     }
 
+    stop(){
+        this.vx = 0
+        this.vy = 0
+    }
 }
