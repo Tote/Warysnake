@@ -1,4 +1,5 @@
 import GloopItem from "./gloop/GloopItem.js";
+import BoardCell from "./BoardCell.js";
 
 export default class Board extends GloopItem{
     constructor(rows, cols, width, height){
@@ -9,6 +10,7 @@ export default class Board extends GloopItem{
         this.height     = height
         this.rowHeight  = height / rows
         this.colWidth   = width / cols
+        this.walls = this.generateWalls()
         
     }
     draw(g){
@@ -24,6 +26,21 @@ export default class Board extends GloopItem{
             c.lineTo(l,this.height)
         }
         c.stroke()
+    }
+
+    generateWalls(){
+        const walls = []
+        for(let r = 0; r < this.rowCount; r++){
+            walls.push(new BoardCell(-1,r,this))
+            walls.push(new BoardCell(this.colCount,r,this))
+        }
+        for(let l = 0; l < this.colCount; l++){
+            walls.push(new BoardCell(l,-1,this))
+            walls.push(new BoardCell(l,this.rowCount,this))
+        }
+
+    return walls
+
     }
 
     xOfColumn(col){
