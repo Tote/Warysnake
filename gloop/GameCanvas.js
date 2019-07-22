@@ -13,7 +13,7 @@ export default class GameCanvas{
         
         const canvas = document.createElement('canvas')
         canvas.width = document.documentElement.clientWidth - SCROLLBAR_COMPENSATION
-        canvas.height = document.documentElement.clientHeight- SCROLLBAR_COMPENSATION
+        canvas.height = 0.5 * document.documentElement.clientHeight- SCROLLBAR_COMPENSATION
         
         document.body.appendChild(canvas)
 

@@ -12,7 +12,7 @@ const graphics  = new Graphics(canvas)
 const loop      = new Gloop(graphics)
 const keyboard  = new Keys()
 
-const board = new Board(10,10,canvas.width(), canvas.height())
+const board = new Board(100,100,canvas.width(), canvas.height())
 loop.item(board)
 
 let fruit = BoardCell.random(board)

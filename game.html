@@ -3,6 +3,16 @@
 <head>
 </head>
 <body>
+    <pre></pre>
+    <script>
+        const screenConsole = document.querySelector('pre')
+        const oldConsoleLog = console.log
+        console.log = (input) => {
+                oldConsoleLog(input)
+                screenConsole.innerText += input
+            }
+        console.log('test')
+    </script>
     <script type="module" src="game.js"></script>
 </body>
 </html>
