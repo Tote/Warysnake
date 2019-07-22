@@ -3,9 +3,9 @@ import Graphics     from './gloop/Graphics.js'
 import Gloop        from './gloop/Gloop.js'
 import Keys         from './gloop/Keys.js'
 
-import Board        from './Board.js'
-import BoardCell    from './BoardCell.js'
-import Snake        from './Snake.js'
+import Board        from './Items/Board.js'
+import BoardCell    from './Items/BoardCell.js'
+import Snake        from './Items/Snake.js'
 
 const canvas    = new GameCanvas()
 const graphics  = new Graphics(canvas)

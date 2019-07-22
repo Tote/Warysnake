@@ -1,4 +1,4 @@
-import GloopItem from "./gloop/GloopItem.js";
+import GloopItem from "../gloop/GloopItem.js";
 import BoardCell from "./BoardCell.js";
 
 export default class Board extends GloopItem{
