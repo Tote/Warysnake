@@ -6,10 +6,12 @@ export default class BoardCell extends GloopItem {
         this.cellX = x
         this.cellY = y
         this.board = board
+        this.color = 'black'
         this.position()
         this.size()
     }
     draw(g){
+        g.color(this.color)
         g.rect(this)
     }
     next(){
@@ -24,6 +26,9 @@ export default class BoardCell extends GloopItem {
     size(){
         this.w = this.board.colWidth
         this.h = this.board.rowHeight
+    }
+    color(color){
+        this.color = color
     }
 }
 
