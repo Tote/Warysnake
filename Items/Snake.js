@@ -72,4 +72,11 @@ export default class Snake extends GloopItem{
         this.vx = 0
         this.vy = 0
     }
+    
+    isMovingVertically(){
+        return this.vy != 0
+    }
+    isMovingHorizontally(){
+        return this.vx != 0
+    }
 }
